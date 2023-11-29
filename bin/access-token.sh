@@ -9,7 +9,7 @@ fi
 DEFAULT_USERNAME='admin'
 DEFAULT_PASSWORD='Password01!'
 DEFAULT_REGION='us-east-1'
-PARAMETER_STORE_COGNITO_KEY='/mrwconsulting/shinto/cognito'
+PARAMETER_STORE_KEY='/mrwconsulting/shinto/client-id'
 
 read -e -p  "Enter cognito username [$DEFAULT_USERNAME]: " COGNITO_USERNAME
 COGNITO_USERNAME="${COGNITO_USERNAME:-$DEFAULT_USERNAME}"
@@ -20,7 +20,7 @@ AWS_REGION="${AWS_REGION:-$DEFAULT_REGION}"
 
 CLIENT_ID=$(aws ssm get-parameter \
         --region 'us-east-1' \
-        --name '/mrwconsulting/shinto/cognito' \
+        --name ${PARAMETER_STORE_KEY} \
         --query Parameter.Value \
         --output text )
 ACCESS_TOKEN=$(aws cognito-idp initiate-auth  \
