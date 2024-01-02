@@ -4,3 +4,9 @@ info:
   environment: dev
 metadata:
   - PROJECT_WORKSPACE: springboot-maven
+source:
+  type: GITHUB
+  branch: main
+  repoString: mrwconsulting/shinto-samples
+  connectionArn: arn:aws:codestar-connections:us-east-1:578205859804:connection/00251662-2ede-4ee6-9e0c-590ea2a82ad8
+  triggerOnPush: true
