@@ -3,7 +3,7 @@ info:
   project: 'springboot-maven'
   environment: 'dev'
 metadata:
-  - PROJECT_WORKSPACE: 'springboot-maven'
+  PROJECT_WORKSPACE: 'springboot-maven'
 source:
   type: GITHUB
   options:
