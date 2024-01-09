@@ -5,7 +5,7 @@ info:
 metadata:
   PROJECT_WORKSPACE: 'springboot-maven'
 source:
-  type: CODESTAR
+  type: CodeStar
   codeStar:
     branch: 'main'
     repository: 'mrwconsulting/shinto-samples'
