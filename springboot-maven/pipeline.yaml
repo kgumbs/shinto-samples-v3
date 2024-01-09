@@ -10,3 +10,6 @@ source:
     branch: 'main'
     repository: 'mrwconsulting/shinto-samples'
     codeStarArn: 'arn:aws:codestar-connections:us-east-1:578205859804:connection/d40b135b-3d77-4c5c-8330-2f575fba9998'
+stages: [
+  {name: 21-Corretto}
+]
