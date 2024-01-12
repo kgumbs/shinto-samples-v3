@@ -16,4 +16,4 @@ stages:
     pluginName: 21-Corretto
     commands:
       - echo "********* hello world ***********"
-        mvn --version
+      - mvn --version
