@@ -4,7 +4,7 @@ info:
   environment: dev
 metadata:
   PROJECT_WORKSPACE: springboot-maven
-  COMPUTE_TYPE: small
+  COMPUTE_TYPE: large
 source:
   type: CodeStar
   codeStar:
@@ -19,3 +19,7 @@ stages:
     commands:
       - echo "********* hello world ***********"
       - mvn --version
+    variables:
+      MY_VAR:
+        type: PLAINTEXT
+        value: HELLO-WORLD
