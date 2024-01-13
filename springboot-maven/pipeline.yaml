@@ -21,5 +21,7 @@ stages:
       - mvn --version
     variables:
       MY_VAR:
+        value: HELLO-WORLD
+      ANOTHER_VAR:
         type: PLAINTEXT
         value: HELLO-WORLD
