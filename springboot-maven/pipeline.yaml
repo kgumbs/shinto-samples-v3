@@ -4,7 +4,7 @@ info:
   environment: dev
 metadata:
   PROJECT_WORKSPACE: springboot-maven
-  COMPUTE_TYPE: large
+  COMPUTE_TYPE: small
 source:
   type: CodeStar
   codeStar:
