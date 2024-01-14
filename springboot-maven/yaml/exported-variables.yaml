@@ -1,0 +1,8 @@
+{
+version: '0.2',
+env: {
+  exported-variables:
+    - MY_VAR
+    - ANOTHER_VAR
+  }
+}

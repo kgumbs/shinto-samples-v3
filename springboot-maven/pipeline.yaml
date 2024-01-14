@@ -16,6 +16,8 @@ stages:
   - stageName: BuildStage
     stepType: pre
     pluginName: 21-Corretto
+    metadata:
+      '21-CORRETTO:PRIVILEGED': 'true'
     commands:
       - echo "********* hello world ***********"
       - mvn --version
