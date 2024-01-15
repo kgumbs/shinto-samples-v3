@@ -27,4 +27,4 @@ stages:
       ANOTHER_VAR:
         type: PLAINTEXT
         value: HELLO-WORLD
-    partialBuildSpecFile: 'yaml/exported-variables.yaml'
+    partialBuildSpecFile: yaml/exported-variables.yaml
