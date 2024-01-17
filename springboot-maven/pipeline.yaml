@@ -14,7 +14,7 @@ source:
       arn:aws:codestar-connections:us-east-1:578205859804:connection/d40b135b-3d77-4c5c-8330-2f575fba9998
 stages:
   - stageName: BuildStage
-    stepType: pre
+    stageType: pre
     pluginName: 21-Corretto
     metadata:
       '21-CORRETTO:PRIVILEGED': 'true'
