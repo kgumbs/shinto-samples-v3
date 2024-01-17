@@ -32,6 +32,9 @@ stages:
       - pluginName: 3.19-Alpine
         commands:
           - echo "********* ADD-ON ***********"
+      - pluginName: 3.19-Alpine
+        commands:
+          - echo "********* ANOTHER ADD-ON ***********"
         variables:
           MY_VAR:
             value: HELLO-WORLD
