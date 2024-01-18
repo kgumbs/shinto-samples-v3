@@ -42,3 +42,34 @@ stages:
             type: PLAINTEXT
             value: HELLO-WORLD
         partialBuildSpecFile: yaml/exported-variables.yaml
+  - stageName: AnotherStage
+    stageType: post
+    pluginName: 21-Corretto
+    metadata:
+      '21-CORRETTO:PRIVILEGED': 'true'
+    commands:
+      - echo "********* hello world ***********"
+      - mvn --version
+    variables:
+      MY_VAR:
+        value: HELLO-WORLD
+      ANOTHER_VAR:
+        type: PLAINTEXT
+        value: HELLO-WORLD
+    partialBuildSpecFile: yaml/exported-variables.yaml
+    pre:
+      - pluginName: 3.19-Alpine
+        pluginAliasName: Linux-01
+        commands:
+          - echo "********* ADD-ON ***********"
+      - pluginName: 3.19-Alpine
+        pluginAliasName: Linux-02
+        commands:
+          - echo "********* ANOTHER ADD-ON ***********"
+        variables:
+          MY_VAR:
+            value: HELLO-WORLD
+          ANOTHER_VAR:
+            type: PLAINTEXT
+            value: HELLO-WORLD
+        partialBuildSpecFile: yaml/exported-variables.yaml
