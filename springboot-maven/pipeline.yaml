@@ -44,6 +44,7 @@ stages:
         partialBuildSpecFile: yaml/exported-variables.yaml
   - stageName: AnotherStage
     stageType: post
+    pluginAliasName: Linux
     pluginName: 21-Corretto
     metadata:
       '21-CORRETTO:PRIVILEGED': 'true'
