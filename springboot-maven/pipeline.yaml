@@ -19,7 +19,7 @@ stages:
     metadata:
       '21-CORRETTO:PRIVILEGED': 'true'
     commands:
-      - echo "********* hello world ***********"
+      - echo "********* BuildStage ***********"
       - mvn --version
     variables:
       MY_VAR:
@@ -46,9 +46,9 @@ stages:
     pluginName: 21-Corretto
     pluginAliasName: Linux
     metadata:
-      '21-CORRETTO:PRIVILEGED': 'true'
+      '21-CORRETTO:PRIVILEGED': 'false'
     commands:
-      - echo "********* hello world ***********"
+      - echo "********* AnotherStage ***********"
       - mvn --version
     variables:
       MY_VAR:
