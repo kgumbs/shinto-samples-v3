@@ -41,11 +41,10 @@ stages:
           ANOTHER_VAR:
             type: PLAINTEXT
             value: HELLO-WORLD
-        partialBuildSpecFile: yaml/exported-variables.yaml
   - stageName: AnotherStage
     stageType: post
-    pluginAliasName: Linux
     pluginName: 21-Corretto
+    pluginAliasName: Linux
     metadata:
       '21-CORRETTO:PRIVILEGED': 'true'
     commands:
@@ -57,7 +56,7 @@ stages:
       ANOTHER_VAR:
         type: PLAINTEXT
         value: HELLO-WORLD
-    partialBuildSpecFile: yaml/exported-variables.yaml
+    partialBuildSpecFile: yaml/reports.yaml
     pre:
       - pluginName: 3.19-Alpine
         pluginAliasName: Linux-01
@@ -73,4 +72,3 @@ stages:
           ANOTHER_VAR:
             type: PLAINTEXT
             value: HELLO-WORLD
-        partialBuildSpecFile: yaml/exported-variables.yaml
