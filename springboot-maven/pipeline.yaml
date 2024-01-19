@@ -46,16 +46,16 @@ stages:
       - mvn --version
     variables:
       MY_VAR_STAGE:
-        value: #{Variables.MY_VAR}
+        value: null
       ANOTHER_VAR_STAGE:
-        value: #{CODEBUILD_ANOTHER_VAR}
+        value: null
     partialBuildSpecFile: yaml/reports.yaml
     pre:
       - pluginName: 3.19-Alpine
         pluginAliasName: Linux-01
         commands:
           - echo "********* ADD-ON ***********"
-          - echo "CODEBUILD_ANOTHER_VAR:  "${CODEBUILD_ANOTHER_VAR}
+          - echo ${CODEBUILD_ANOTHER_VAR}
       - pluginName: 3.19-Alpine
         pluginAliasName: Linux-02
         commands:
