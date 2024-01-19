@@ -36,9 +36,9 @@ stages:
         commands:
           - echo "********* ANOTHER ADD-ON ***********"
         variables:
-          MY_VAR:
+          MY_VAR_STAGE:
             value: #{Variables.MY_VAR}
-          ANOTHER_VAR:
+          ANOTHER_VAR_STAGE:
             value: #{Variables.ANOTHER_VAR}
   - stageName: AnotherStage
     stageType: post
@@ -50,9 +50,9 @@ stages:
       - echo "********* AnotherStage ***********"
       - mvn --version
     variables:
-      MY_VAR:
+      MY_VAR_STAGE:
         value: #{Variables.MY_VAR}
-      ANOTHER_VAR:
+      ANOTHER_VAR_STAGE:
         value: #{Variables.ANOTHER_VAR}
     partialBuildSpecFile: yaml/reports.yaml
     pre:
@@ -65,7 +65,7 @@ stages:
         commands:
           - echo "********* ANOTHER ADD-ON ***********"
         variables:
-          MY_VAR:
+          MY_VAR_STAGE:
             value: #{Variables.MY_VAR}
-          ANOTHER_VAR:
+          ANOTHER_VAR_STAGE:
             value: #{Variables.ANOTHER_VAR}
