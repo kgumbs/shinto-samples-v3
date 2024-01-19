@@ -46,9 +46,9 @@ stages:
       - mvn --version
     variables:
       MY_VAR_STAGE:
-        value: null
+        value: #{Variables.MY_VAR}
       ANOTHER_VAR_STAGE:
-        value: null
+        value: ${CODEBUILD_ANOTHER_VAR}
     partialBuildSpecFile: yaml/reports.yaml
     pre:
       - pluginName: 3.19-Alpine
