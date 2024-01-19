@@ -22,9 +22,9 @@ stages:
       - echo "********* BuildStage ***********"
       - mvn --version
     variables:
-      MY_VAR:
+      MY_BUILD_VAR:
         value: HELLO-WORLD
-      ANOTHER_VAR:
+      ANOTHER_BUILD_VAR:
         type: PLAINTEXT
         value: HELLO-WORLD
     partialBuildSpecFile: yaml/exported-variables.yaml
@@ -51,11 +51,8 @@ stages:
       - echo "********* AnotherStage ***********"
       - mvn --version
     variables:
-      MY_VAR:
-        value: HELLO-WORLD
-      ANOTHER_VAR:
-        type: PLAINTEXT
-        value: HELLO-WORLD
+      MY_ANOTHER_VAR:
+        value: CODEBUILD_MY_BUILD_VAR
     partialBuildSpecFile: yaml/reports.yaml
     pre:
       - pluginName: 3.19-Alpine
@@ -71,4 +68,4 @@ stages:
             value: HELLO-WORLD
           ANOTHER_VAR:
             type: PLAINTEXT
-            value: HELLO-WORLD
+            value: CODEBUILD_MY_BUILD_VAR
