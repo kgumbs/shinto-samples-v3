@@ -43,6 +43,7 @@ stages:
       '21-CORRETTO:PRIVILEGED': 'false'
     commands:
       - echo "********* AnotherStage ***********"
+      - echo ${CODEBUILD_ANOTHER_VAR}
       - mvn --version
     variables:
       MY_VAR_STAGE:
@@ -55,7 +56,6 @@ stages:
         pluginAliasName: Linux-01
         commands:
           - echo "********* ADD-ON ***********"
-          - echo ${CODEBUILD_ANOTHER_VAR}
       - pluginName: 3.19-Alpine
         pluginAliasName: Linux-02
         commands:
