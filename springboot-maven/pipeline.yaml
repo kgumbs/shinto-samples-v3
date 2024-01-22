@@ -28,35 +28,3 @@ stages:
         type: PLAINTEXT
         value: HELLO-WORLD
     partialBuildSpecFile: yaml/exported-variables.yaml
-    post:
-      - pluginName: 3.19-Alpine
-        commands:
-          - echo "********* ADD-ON ***********"
-      - pluginName: 3.19-Alpine
-        commands:
-          - echo "********* ANOTHER ADD-ON ***********"
-  - stageName: AnotherStage
-    stageType: post
-    pluginName: 21-Corretto
-    pluginAliasName: Linux
-    metadata:
-      '21-CORRETTO:PRIVILEGED': 'false'
-    commands:
-      - echo "********* AnotherStage ***********"
-      - echo ${CODEBUILD_ANOTHER_VAR} ${ANOTHER_VAR_STAGE}
-      - mvn --version
-    variables:
-      MY_VAR_STAGE:
-        value: #{Variables.MY_VAR}
-      ANOTHER_VAR_STAGE:
-        value: ${CODEBUILD_ANOTHER_VAR}
-    partialBuildSpecFile: yaml/reports.yaml
-    pre:
-      - pluginName: 3.19-Alpine
-        pluginAliasName: Linux-01
-        commands:
-          - echo "********* ADD-ON ***********"
-      - pluginName: 3.19-Alpine
-        pluginAliasName: Linux-02
-        commands:
-          - echo "********* ANOTHER ADD-ON ***********"
