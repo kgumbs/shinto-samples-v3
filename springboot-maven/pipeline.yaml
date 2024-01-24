@@ -27,7 +27,6 @@ stages:
       ANOTHER_VAR:
         type: PLAINTEXT
         value: HELLO-WORLD
-    partialBuildSpecFile: yaml/exported-variables.yaml
     post:
       - pluginName: 3.19-Alpine
         commands:
