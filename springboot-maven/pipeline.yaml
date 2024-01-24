@@ -41,3 +41,4 @@ stages:
     commands:
       - echo "********* AnotherStage ***********"
       - env
+      - echo ${PIPELINE_ID}
