@@ -41,10 +41,3 @@ stages:
     commands:
       - echo "********* AnotherStage ***********"
       - env
-    pre:
-      - pluginName: 3.19-Alpine
-        commands:
-          - echo "********* ADD-ON ***********"
-      - pluginName: 3.19-Alpine
-        commands:
-          - echo "********* ANOTHER ADD-ON ***********"
