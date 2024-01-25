@@ -48,3 +48,5 @@ stages:
       - echo "********* AnotherStage ***********"
       - env
       - 'echo ${PIPELINE_ID}'
+    mappings:
+      'BuildStage:OpenJDK': 'output-directory'
