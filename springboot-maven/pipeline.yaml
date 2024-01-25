@@ -24,8 +24,8 @@ stages:
     commands:
       - echo "********* BuildStage ***********"
       - mvn --version
-      - mkdir dist && ls -l
-      - pwd
+      - mkdir dist && pwd
+      - ls -l
     variables:
       MY_VAR:
         value: HELLO-WORLD
