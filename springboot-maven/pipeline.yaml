@@ -24,8 +24,8 @@ stages:
     commands:
       - echo "********* BuildStage ***********"
       - mvn --version
-      - mkdir dist && pwd
-      - ls -l
+      - mkdir dist && touch dist/notes.txt
+      - pwd && ls -l
     variables:
       MY_VAR:
         value: HELLO-WORLD
