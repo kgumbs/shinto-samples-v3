@@ -20,11 +20,12 @@ stages:
     pluginName: 21-Corretto
     pluginAliasName: OpenJDK
     outputDirectory:
-      - dist
+      - ./dist
     commands:
       - echo "********* BuildStage ***********"
       - mvn --version
-      - mkdir dist
+      - mkdir dist && ls -l
+      - pwd
     variables:
       MY_VAR:
         value: HELLO-WORLD
