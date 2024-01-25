@@ -49,4 +49,5 @@ stages:
       - env
       - 'echo ${PIPELINE_ID}'
     mappings:
-      'BuildStage:OpenJDK': 'output-directory'
+      'BuildStage:OpenJDK': 
+        output-directory : dist
