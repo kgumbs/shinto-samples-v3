@@ -15,10 +15,12 @@ source:
 stages:
   - stageName: BuildStage
     stageType: pre
-    pluginName: 21-Corretto
-    pluginAliasName: OpenJDK
     metadata:
       '21-CORRETTO:PRIVILEGED': 'true'
+    pluginName: 21-Corretto
+    pluginAliasName: OpenJDK
+    outputDirectory:
+      - dist
     commands:
       - echo "********* BuildStage ***********"
       - mvn --version
@@ -40,7 +42,9 @@ stages:
     stageType: post
     pluginName: 21-Corretto
     pluginAliasName: Bash
+    outputDirectory:
+      - lib
     commands:
       - echo "********* AnotherStage ***********"
       - env
-      - echo ${PIPELINE_ID}
+      - 'echo ${PIPELINE_ID}'
