@@ -23,6 +23,7 @@ stages:
       - dist
     commands:
       - echo "********* BuildStage ***********"
+      - mvn --version
       - mkdir dist
     variables:
       MY_VAR:
