@@ -41,7 +41,7 @@ stages:
       - pluginName: 3.19-Alpine
         commands:
           - echo "********* ANOTHER ADD-ON ***********"
-  - stageName: AnotherStage
+  - stageName: CodeBuildStepStage
     stageType: post
     pluginName: 21-Corretto
     pluginAliasName: Bash
@@ -50,6 +50,6 @@ stages:
       - env
       - 'echo ${PIPELINE_ID}'
     mappings:
-      'BuildStage:OpenJDK': 
-        output-directory : dist
-        exported-variable: ANOTHER_VAR
+      'BuildStage:OpenJDK':
+        - output-directory: dist
+        - exported-variable: ANOTHER_VAR
