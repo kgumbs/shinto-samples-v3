@@ -52,5 +52,7 @@ stages:
       - 'echo ${PIPELINE_ID}'
     mappings:
       'BuildStage:OpenJDK':
-        - output-directory: dist
-        - exported-variable: ANOTHER_VAR
+        - mappingType: exported-variable
+          value: ANOTHER_VAR
+        - mappingType: output-directory
+          value: dist
