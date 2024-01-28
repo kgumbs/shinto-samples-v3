@@ -45,8 +45,9 @@ stages:
     stageType: post
     pluginName: 21-Corretto
     pluginAliasName: Bash
+    pluginType: CodeBuildStep
     commands:
-      - echo "********* AnotherStage ***********"
+      - echo "********* CodeBuildStepStage ***********"
       - env
       - 'echo ${PIPELINE_ID}'
     mappings:
