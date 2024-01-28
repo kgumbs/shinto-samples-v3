@@ -56,18 +56,3 @@ stages:
           value: ANOTHER_VAR
         - mappingType: output-directory
           value: dist
-  - stageName: ShellStepStage
-      stageType: pre
-      pluginName: 21-Corretto
-      pluginAliasName: Bash
-      pluginType: ShellStep
-      commands:
-        - echo "********* ShellStepStage ***********"
-        - env
-        - 'echo ${PIPELINE_ID}'
-      mappings:
-        'BuildStage:OpenJDK':
-          - mappingType: exported-variable
-            value: ANOTHER_VAR
-          - mappingType: output-directory
-            value: dist
