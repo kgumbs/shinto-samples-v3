@@ -53,6 +53,8 @@ stages:
     mappings:
       'BuildStage:OpenJDK':
         - type: exported-variable
+          value: MY_VAR
+        - type: exported-variable
           value: ANOTHER_VAR
         - type: output-directory
           value: dist
