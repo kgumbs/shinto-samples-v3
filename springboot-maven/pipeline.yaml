@@ -41,13 +41,12 @@ stages:
       - pluginName: 3.19-Alpine
         commands:
           - echo "********* ANOTHER ADD-ON ***********"
-  - stageName: CodeBuildStepStage
+  - stageName: MyStage
     stageType: post
     pluginName: 21-Corretto
     pluginAliasName: Bash
-    pluginType: CodeBuildStep
     commands:
-      - echo "********* CodeBuildStepStage ***********"
+      - echo "********* MyStage ***********"
       - env
       - 'echo ${PIPELINE_ID}'
     mappings:
@@ -58,13 +57,12 @@ stages:
           value: ANOTHER_VAR
         - type: output-directory
           value: dist
-  - stageName: ShellStepStage
+  - stageName: AnotherStage
     stageType: pre
     pluginName: 21-Corretto
     pluginAliasName: Bash
-    pluginType: ShellStep
     commands:
-      - echo "********* ShellStepStage ***********"
+      - echo "********* AnotherStage ***********"
       - env
       - 'echo ${PIPELINE_ID}'
     mappings:
