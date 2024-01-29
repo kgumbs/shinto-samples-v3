@@ -61,7 +61,7 @@ stages:
           value: dist
   - stageName: AnotherStage
     stageType: pre
-    pluginName: 21-Corretto
+    pluginName: UnixShell
     pluginAliasName: Bash
     commands:
       - echo "********* AnotherStage ***********"
