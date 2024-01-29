@@ -36,9 +36,11 @@ stages:
     partialBuildSpecFile: yaml/exported-variables.yaml
     post:
       - pluginName: 3.19-Alpine
+        pluginAliasName: Alpine-01
         commands:
           - echo "********* ADD-ON ***********"
       - pluginName: 3.19-Alpine
+        pluginAliasName: Alpine-02
         commands:
           - echo "********* ANOTHER ADD-ON ***********"
   - stageName: MyStage
