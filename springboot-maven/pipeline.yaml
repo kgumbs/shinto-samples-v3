@@ -61,7 +61,7 @@ stages:
   - stageName: ShellStepStage
     stageType: pre
     pluginName: 21-Corretto
-    pluginAliasName: ShellBash
+    pluginAliasName: Bash
     pluginType: ShellStep
     commands:
       - echo "********* ShellStepStage ***********"
