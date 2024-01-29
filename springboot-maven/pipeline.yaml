@@ -44,8 +44,7 @@ stages:
         commands:
           - echo "********* ANOTHER ADD-ON ***********"
   - stageName: MyStage
-    stageType: post
-    pluginName: 21-Corretto
+    pluginName: UnixShell
     pluginAliasName: Bash
     commands:
       - echo "********* MyStage ***********"
@@ -60,8 +59,7 @@ stages:
         - type: output-directory
           value: dist
   - stageName: AnotherStage
-    stageType: pre
-    pluginName: UnixShell
+    pluginName: 21-Corretto
     pluginAliasName: Bash
     commands:
       - echo "********* AnotherStage ***********"
