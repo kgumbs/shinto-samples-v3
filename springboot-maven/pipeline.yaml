@@ -58,18 +58,3 @@ stages:
           value: ANOTHER_VAR
         - type: output-directory
           value: dist
-  - stageName: AnotherStage
-    pluginName: 21-Corretto
-    pluginAliasName: Bash
-    commands:
-      - echo "********* AnotherStage ***********"
-      - env
-      - 'echo ${PIPELINE_ID}'
-    mappings:
-      'BuildStage:OpenJDK':
-        - type: exported-variable
-          value: MY_VAR
-        - type: exported-variable
-          value: ANOTHER_VAR
-        - type: output-directory
-          value: dist
