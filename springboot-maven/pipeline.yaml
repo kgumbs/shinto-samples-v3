@@ -46,7 +46,7 @@ stages:
   - stageName: MyStage
     stageType: pre
     metadata:
-      'UNIXSHELL:PRIVILEGED': 'true'
+      'BASH:PRIVILEGED': 'true'
     pluginName: UnixShell
     pluginAliasName: Bash
     commands:
@@ -86,7 +86,7 @@ stages:
               value: dist
   - stageName: AnotherStage
     metadata:
-      '3.19-ALPINE:PRIVILEGED': 'true'
+      'BASH:PRIVILEGED': 'true'
     pluginName: 3.19-Alpine
     pluginAliasName: Bash
     commands:
