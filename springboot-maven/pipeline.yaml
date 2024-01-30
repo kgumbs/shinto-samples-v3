@@ -46,7 +46,7 @@ stages:
   - stageName: MyStage
     stageType: pre
     metadata:
-      '21-CORRETTO:PRIVILEGED': 'true'
+      'UNIXSHELL:PRIVILEGED': 'true'
     pluginName: UnixShell
     pluginAliasName: Bash
     commands:
@@ -57,5 +57,7 @@ stages:
           value: MY_VAR
         - type: exported-variable
           value: ANOTHER_VAR
+        - type: output-directory
+          value: dist
 
 
