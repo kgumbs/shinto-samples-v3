@@ -47,8 +47,8 @@ stages:
     stageType: pre
     metadata:
       '21-CORRETTO:PRIVILEGED': 'true'
-    pluginName: 21-Corretto
-    pluginAliasName: OpenJDK
+    pluginName: UnixShell
+    pluginAliasName: Bash
     commands:
       - echo "********* MyStage ***********"
     mappings:
