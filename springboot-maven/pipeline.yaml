@@ -43,4 +43,9 @@ stages:
         pluginAliasName: Alpine-02
         commands:
           - echo "********* ANOTHER ADD-ON ***********"
-
+  - stageName: CodeBuildStepStage
+    pluginName: 21-Corretto
+    pluginAliasName: Bash
+    commands:
+      - echo "********* CodeBuildStepStage ***********"
+      - 'echo ${PIPELINE_ID}'
