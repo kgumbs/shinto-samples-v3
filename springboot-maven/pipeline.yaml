@@ -18,7 +18,7 @@ stages:
     pluginName: 21-Corretto
     pluginAliasName: OpenJDK
     metadata:
-      '21-CORRETTO:PRIVILEGED': 'true'
+      '21-CORRETTO:PRIVILEGED': 'false'
     outputDirectory:
       - springboot-maven/dist
     commands:
@@ -43,3 +43,45 @@ stages:
         pluginAliasName: Alpine-02
         commands:
           - echo "********* ANOTHER ADD-ON ***********"
+  - stageName: MyStage
+    stageType: pre
+    pluginName: UnixShell
+    pluginAliasName: Bash
+    metadata:
+      'UNIXSHELL:PRIVILEGED': 'true'
+    commands:
+      - echo "********* MyStage ***********"
+    mappings:
+      'BuildStage:OpenJDK':
+        - type: exported-variable
+          value: MY_VAR
+        - type: exported-variable
+          value: ANOTHER_VAR
+        - type: output-directory
+          value: dist
+    post:
+      - pluginName: 3.19-Alpine
+        pluginAliasName: Alpine-01
+        commands:
+          - echo "********* ADD-ON ***********"
+        mappings:
+          'BuildStage:OpenJDK':
+            - type: exported-variable
+              value: MY_VAR
+            - type: exported-variable
+              value: ANOTHER_VAR
+            - type: output-directory
+              value: dist
+      - pluginName: 3.19-Alpine
+        pluginAliasName: Alpine-02
+        commands:
+          - echo "********* ANOTHER ADD-ON ***********"
+        mappings:
+          'BuildStage:OpenJDK':
+            - type: exported-variable
+              value: MY_VAR
+            - type: exported-variable
+              value: ANOTHER_VAR
+            - type: output-directory
+              value: dist
+  
