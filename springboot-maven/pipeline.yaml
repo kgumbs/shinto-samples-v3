@@ -15,8 +15,6 @@ source:
 stages:
   - stageName: BuildStage
     stageType: pre
-    metadata:
-      '21-CORRETTO:PRIVILEGED': 'true'
     pluginName: 21-Corretto
     pluginAliasName: OpenJDK
     outputDirectory:
@@ -45,8 +43,6 @@ stages:
           - echo "********* ANOTHER ADD-ON ***********"
   - stageName: MyStage
     stageType: pre
-    metadata:
-      'BASH:PRIVILEGED': 'true'
     pluginName: UnixShell
     pluginAliasName: Bash
     commands:
@@ -85,8 +81,6 @@ stages:
             - type: output-directory
               value: dist
   - stageName: AnotherStage
-    metadata:
-      'BASH:PRIVILEGED': 'true'
     pluginName: 3.19-Alpine
     pluginAliasName: Bash
     commands:
