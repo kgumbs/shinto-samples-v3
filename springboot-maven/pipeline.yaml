@@ -49,8 +49,6 @@ stages:
       '21-CORRETTO:PRIVILEGED': 'true'
     pluginName: 21-Corretto
     pluginAliasName: OpenJDK
-    outputDirectory:
-      - springboot-maven/dist
     commands:
       - echo "********* MyStage ***********"
     variables:
