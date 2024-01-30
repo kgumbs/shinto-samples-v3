@@ -18,7 +18,7 @@ stages:
     pluginName: 21-Corretto
     pluginAliasName: OpenJDK
     metadata:
-      '21-CORRETTO:PRIVILEGED': 'false'
+      '21-CORRETTO:PRIVILEGED': 'true'
     outputDirectory:
       - springboot-maven/dist
     commands:
