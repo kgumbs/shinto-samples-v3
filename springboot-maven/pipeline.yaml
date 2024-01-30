@@ -43,9 +43,30 @@ stages:
         pluginAliasName: Alpine-02
         commands:
           - echo "********* ANOTHER ADD-ON ***********"
-  - stageName: CodeBuildStepStage
+  - stageName: MyStage
+    stageType: pre
+    metadata:
+      '21-CORRETTO:PRIVILEGED': 'true'
     pluginName: 21-Corretto
-    pluginAliasName: Bash
+    pluginAliasName: OpenJDK
+    outputDirectory:
+      - springboot-maven/dist
     commands:
-      - echo "********* CodeBuildStepStage ***********"
-      - 'echo ${PIPELINE_ID}'
+      - echo "********* MyStage ***********"
+    variables:
+      MY_VAR:
+        value: HELLO-WORLD
+      ANOTHER_VAR:
+        type: PLAINTEXT
+        value: HELLO-WORLD
+    partialBuildSpecFile: yaml/exported-variables.yaml
+    post:
+      - pluginName: 3.19-Alpine
+        pluginAliasName: Alpine-01
+        commands:
+          - echo "********* ADD-ON ***********"
+      - pluginName: 3.19-Alpine
+        pluginAliasName: Alpine-02
+        commands:
+          - echo "********* ANOTHER ADD-ON ***********"
+
