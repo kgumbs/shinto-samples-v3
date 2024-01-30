@@ -37,10 +37,14 @@ stages:
     post:
       - pluginName: 3.19-Alpine
         pluginAliasName: Alpine-01
+        metadata:
+          '3.19-ALPINE:PRIVILEGED': 'true'
         commands:
           - echo "********* ADD-ON ***********"
       - pluginName: 3.19-Alpine
         pluginAliasName: Alpine-02
+        metadata:
+          '3.19-ALPINE:PRIVILEGED': 'true'
         commands:
           - echo "********* ANOTHER ADD-ON ***********"
   - stageName: MyStage
@@ -62,6 +66,8 @@ stages:
     post:
       - pluginName: 3.19-Alpine
         pluginAliasName: Alpine-01
+        metadata:
+          '3.19-ALPINE:PRIVILEGED': 'true'
         commands:
           - echo "********* ADD-ON ***********"
         mappings:
@@ -74,6 +80,8 @@ stages:
               value: dist
       - pluginName: 3.19-Alpine
         pluginAliasName: Alpine-02
+        metadata:
+          '3.19-ALPINE:PRIVILEGED': 'true'
         commands:
           - echo "********* ANOTHER ADD-ON ***********"
         mappings:
