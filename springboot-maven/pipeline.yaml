@@ -59,5 +59,20 @@ stages:
           value: ANOTHER_VAR
         - type: output-directory
           value: dist
+  - stageName: AnotherStage
+    metadata:
+      '3.19-ALPINE:PRIVILEGED': 'true'
+    pluginName: 3.19-Alpine
+    pluginAliasName: Bash
+    commands:
+      - echo "********* AnotherStage ***********"
+    mappings:
+      'BuildStage:OpenJDK':
+        - type: exported-variable
+          value: MY_VAR
+        - type: exported-variable
+          value: ANOTHER_VAR
+        - type: output-directory
+          value: dist
 
 
