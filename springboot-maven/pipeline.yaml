@@ -51,12 +51,11 @@ stages:
     pluginAliasName: OpenJDK
     commands:
       - echo "********* MyStage ***********"
-    variables:
-      MY_VAR:
-        value: HELLO-WORLD
-      ANOTHER_VAR:
-        type: PLAINTEXT
-        value: HELLO-WORLD
-    partialBuildSpecFile: yaml/exported-variables.yaml
+    mappings:
+      'BuildStage:OpenJDK':
+        - type: exported-variable
+          value: MY_VAR
+        - type: exported-variable
+          value: ANOTHER_VAR
 
 
