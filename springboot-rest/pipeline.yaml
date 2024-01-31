@@ -22,7 +22,7 @@ stages:
     outputDirectory:
       - dist
     commands:
-      - mvn clean install compile package
+      - ./mvnw clean install compile package
     variables:
       MY_VAR:
         value: HELLO-WORLD
