@@ -4,7 +4,7 @@ info:
   environment: dev
 metadata:
   PROJECT_WORKSPACE: springboot-rest
-  COMPUTE_TYPE: large
+  COMPUTE_TYPE: small
 source:
   type: CodeStar
   codeStar:
@@ -22,11 +22,7 @@ stages:
     outputDirectory:
       - dist
     commands:
-      - echo "********* BuildStage ***********"
-      - mvn --version
-      - mkdir dist && echo "hello-world" >> dist/notes.txt
-      - cat dist/notes.txt
-      - pwd && ls -l
+      - mvn clean install compile package
     variables:
       MY_VAR:
         value: HELLO-WORLD
