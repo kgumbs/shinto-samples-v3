@@ -53,6 +53,7 @@ stages:
     pluginAliasName: Bash
     commands:
       - echo "********* MyStage ***********"
+      - pwd & ls -l
     mappings:
       'BuildStage:OpenJDK':
         - type: exported-variable
