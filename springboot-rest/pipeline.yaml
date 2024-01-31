@@ -31,10 +31,3 @@ stages:
     commands:
       - echo "********* MyStage ***********"
       - pwd & ls -l
-
-    pluginName: 3.19-Alpine
-    pluginAliasName: Bash
-    metadata:
-      '3.19-ALPINE:PRIVILEGED': 'true'
-    commands:
-      - echo "********* AnotherStage ***********"
