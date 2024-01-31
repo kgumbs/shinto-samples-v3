@@ -20,7 +20,7 @@ stages:
     metadata:
       '21-CORRETTO:PRIVILEGED': 'true'
     outputDirectory:
-      - springboot-maven/dist
+      - dist
     commands:
       - echo "********* BuildStage ***********"
       - mvn --version
