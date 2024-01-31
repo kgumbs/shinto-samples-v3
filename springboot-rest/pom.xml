@@ -12,7 +12,7 @@
 	<groupId>tech.mrwconsulting</groupId>
 	<artifactId>springboot-rest</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
+	<packaging>jar</packaging>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
