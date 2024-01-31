@@ -20,7 +20,7 @@ stages:
     metadata:
       '21-CORRETTO:PRIVILEGED': 'false'
     outputDirectory:
-      - dist
+      - target
     commands:
       - ./mvnw clean install compile package
       - ls
