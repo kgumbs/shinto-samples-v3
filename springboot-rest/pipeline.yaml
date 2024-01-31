@@ -4,7 +4,7 @@ info:
   environment: dev
 metadata:
   PROJECT_WORKSPACE: springboot-rest
-  COMPUTE_TYPE: small
+  COMPUTE_TYPE: large
 source:
   type: CodeStar
   codeStar:
