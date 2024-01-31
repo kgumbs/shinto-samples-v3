@@ -15,9 +15,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-// tag::hateoas-imports[]
-// end::hateoas-imports[]
-
 @RestController
 class EmployeeController {
 
