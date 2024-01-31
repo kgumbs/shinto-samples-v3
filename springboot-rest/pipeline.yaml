@@ -18,7 +18,7 @@ stages:
     pluginName: 21-Corretto
     pluginAliasName: OpenJDK
     metadata:
-      '21-CORRETTO:PRIVILEGED': 'true'
+      '21-CORRETTO:PRIVILEGED': 'false'
     outputDirectory:
       - dist
     commands:
@@ -30,7 +30,7 @@ stages:
     commands:
       - echo "********* MyStage ***********"
       - pwd & ls -l
-  - stageName: AnotherStage
+
     pluginName: 3.19-Alpine
     pluginAliasName: Bash
     metadata:
