@@ -51,8 +51,6 @@ stages:
     stageType: pre
     pluginName: UnixShell
     pluginAliasName: Bash
-    metadata:
-      'UNIXSHELL:PRIVILEGED': 'true'
     commands:
       - echo "********* MyStage ***********"
     mappings:
