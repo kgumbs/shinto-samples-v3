@@ -23,26 +23,6 @@ stages:
       - dist
     commands:
       - ./mvnw clean install compile package
-    variables:
-      MY_VAR:
-        value: HELLO-WORLD
-      ANOTHER_VAR:
-        type: PLAINTEXT
-        value: HELLO-WORLD
-    partialBuildSpecFile: yaml/exported-variables.yaml
-    post:
-      - pluginName: 3.19-Alpine
-        pluginAliasName: Alpine-01
-        metadata:
-          '3.19-ALPINE:PRIVILEGED': 'true'
-        commands:
-          - echo "********* ADD-ON ***********"
-      - pluginName: 3.19-Alpine
-        pluginAliasName: Alpine-02
-        metadata:
-          '3.19-ALPINE:PRIVILEGED': 'true'
-        commands:
-          - echo "********* ANOTHER ADD-ON ***********"
   - stageName: MyStage
     stageType: pre
     pluginName: UnixShell
@@ -50,43 +30,6 @@ stages:
     commands:
       - echo "********* MyStage ***********"
       - pwd & ls -l
-    mappings:
-      'BuildStage:OpenJDK':
-        - type: exported-variable
-          value: MY_VAR
-        - type: exported-variable
-          value: ANOTHER_VAR
-        - type: output-directory
-          value: dist
-    post:
-      - pluginName: 3.19-Alpine
-        pluginAliasName: Alpine-01
-        metadata:
-          '3.19-ALPINE:PRIVILEGED': 'true'
-        commands:
-          - echo "********* ADD-ON ***********"
-        mappings:
-          'BuildStage:OpenJDK':
-            - type: exported-variable
-              value: MY_VAR
-            - type: exported-variable
-              value: ANOTHER_VAR
-            - type: output-directory
-              value: dist
-      - pluginName: 3.19-Alpine
-        pluginAliasName: Alpine-02
-        metadata:
-          '3.19-ALPINE:PRIVILEGED': 'true'
-        commands:
-          - echo "********* ANOTHER ADD-ON ***********"
-        mappings:
-          'BuildStage:OpenJDK':
-            - type: exported-variable
-              value: MY_VAR
-            - type: exported-variable
-              value: ANOTHER_VAR
-            - type: output-directory
-              value: dist
   - stageName: AnotherStage
     pluginName: 3.19-Alpine
     pluginAliasName: Bash
@@ -94,36 +37,3 @@ stages:
       '3.19-ALPINE:PRIVILEGED': 'true'
     commands:
       - echo "********* AnotherStage ***********"
-    mappings: null
-    'BuildStage:OpenJDK':
-      - type: exported-variable
-        value: MY_VAR
-      - type: exported-variable
-        value: ANOTHER_VAR
-      - type: output-directory
-        value: dist
-    pre:
-      - pluginName: 3.19-Alpine
-        pluginAliasName: Alpine-01
-        commands:
-          - echo "********* ADD-ON ***********"
-        mappings:
-          'BuildStage:OpenJDK':
-            - type: exported-variable
-              value: MY_VAR
-            - type: exported-variable
-              value: ANOTHER_VAR
-            - type: output-directory
-              value: dist
-      - pluginName: 3.19-Alpine
-        pluginAliasName: Alpine-02
-        commands:
-          - echo "********* ANOTHER ADD-ON ***********"
-        mappings:
-          'BuildStage:OpenJDK':
-            - type: exported-variable
-              value: MY_VAR
-            - type: exported-variable
-              value: ANOTHER_VAR
-            - type: output-directory
-              value: dist

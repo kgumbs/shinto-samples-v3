@@ -5,13 +5,15 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>tech.mrwconsulting</groupId>
-		<artifactId>springboot-rest</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.3.0.RELEASE</version>
 	</parent>
 
-	<artifactId>rest</artifactId>
+	<groupId>tech.mrwconsulting</groupId>
+	<artifactId>springboot-rest</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
 
 	<dependencies>
 
@@ -25,12 +27,10 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
-		<!-- tag::spring-hateoas[] -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-hateoas</artifactId>
 		</dependency>
-		<!-- end::spring-hateoas[] -->
 
 		<dependency>
 			<groupId>com.h2database</groupId>
