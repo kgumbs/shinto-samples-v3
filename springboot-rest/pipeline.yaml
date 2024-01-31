@@ -23,6 +23,7 @@ stages:
       - dist
     commands:
       - ./mvnw clean install compile package
+      - ls
   - stageName: MyStage
     stageType: pre
     pluginName: UnixShell
