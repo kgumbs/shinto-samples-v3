@@ -1,7 +1,6 @@
 info:
   client: samples
   project: springboot-maven
-  environment: dev
 metadata:
   PROJECT_WORKSPACE: springboot-maven
   COMPUTE_TYPE: small
