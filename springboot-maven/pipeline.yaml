@@ -28,7 +28,7 @@ stages:
       - pluginName: Snyk-Sast
         pluginAliasName: Snyk
         commands:
-          - snyk auth
+          - snyk test
           - snyk monitor --all-projects --org=${SNYK_ORG}
         mappings:
           'BuildStage:OpenJDK':
