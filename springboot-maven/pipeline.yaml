@@ -23,6 +23,7 @@ stages:
       - target
     commands:
       - ./mvnw clean install compile package
+    partialBuildSpecFile: yaml/reports.yaml
   - stageName: MyStage
     stageType: pre
     pluginName: UnixShell
