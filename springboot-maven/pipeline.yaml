@@ -15,10 +15,10 @@ source:
 stages:
   - stageName: BuildStage
     stageType: pre
-    pluginName: 21-Corretto
+    pluginName: 3.9-Maven
     pluginAliasName: OpenJDK
     metadata:
-      '21-CORRETTO:PRIVILEGED': 'false'
+      '3.9-MAVEN:PRIVILEGED': 'false'
     outputDirectory:
       - target
     commands:
