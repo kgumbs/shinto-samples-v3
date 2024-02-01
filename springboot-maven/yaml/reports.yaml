@@ -3,5 +3,5 @@ reports:
   SurefireReports:
     files:
       - "**/*"
-    base-directory: 'target/surefire-reports'
+    base-directory: 'springboot-maven/target/surefire-reports'
     discard-paths: no
