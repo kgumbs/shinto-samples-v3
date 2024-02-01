@@ -14,7 +14,6 @@ source:
       arn:aws:codestar-connections:us-east-1:578205859804:connection/d40b135b-3d77-4c5c-8330-2f575fba9998
 stages:
   - stageName: BuildStage
-    stageType: pre
     pluginName: 3.9-Maven
     pluginAliasName: OpenJDK
     metadata:
