@@ -1,7 +1,0 @@
-version: '0.2'
-reports:
-  junit-reports:
-    files:
-      - "**/*"
-    base-directory: 'target/tests/reports'
-    discard-paths: no
