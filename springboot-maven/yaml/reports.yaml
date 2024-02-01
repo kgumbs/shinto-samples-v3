@@ -1,6 +1,6 @@
 version: '0.2'
 reports:
-  junit-reports:
+  SurefireReports:
     files:
       - "**/*"
     base-directory: 'target/surefire-reports'
