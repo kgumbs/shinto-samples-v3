@@ -24,15 +24,21 @@ stages:
     commands:
       - ./mvnw clean install compile package
     partialBuildSpecFile: yaml/reports.yaml
-  - stageName: MyStage
+  - stageName: SASTStage
     stageType: pre
-    pluginName: UnixShell
-    pluginAliasName: Bash
+    pluginName: Snyk-Sast
+    pluginAliasName: Snyk
     commands:
-      - echo "********* MyStage ***********"
-      - pwd & ls -l
-      - ls -l target/*
+      - snyk test
+      - snyk monitor --all-projects --org=${SNYK_ORG}
     mappings:
       'BuildStage:OpenJDK':
         - type: output-directory
           value: target
+    variables:
+      SNYK_ORG:
+        type: PLAINTEXT
+        value: d765b93b-ebb4-47ea-80eb-8a877d364e4e
+      SNYK_TOKEN:
+        type: PLAINTEXT
+        value: 324e8e61-fa8b-47f6-bd29-ff107f4827cb
