@@ -28,16 +28,16 @@ stages:
       - pluginName: Snyk-Sast
         pluginAliasName: Snyk
         commands:
-          - snyk test
-          - snyk monitor --all-projects --org=${SNYK_ORG}
+          - snyk auth ${SNYK_API_TOKEN}
+          - snyk monitor --all-projects --org=${SNYK_ORG_ID}
         mappings:
           'BuildStage:OpenJDK':
             - type: output-directory
               value: target
         variables:
-          SNYK_ORG:
+          SNYK_ORG_ID:
             type: PLAINTEXT
             value: d765b93b-ebb4-47ea-80eb-8a877d364e4e
-          SNYK_TOKEN:
+          SNYK_API_TOKEN:
             type: PLAINTEXT
             value: 324e8e61-fa8b-47f6-bd29-ff107f4827cb
