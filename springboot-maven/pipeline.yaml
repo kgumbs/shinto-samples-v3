@@ -30,11 +30,8 @@ stages:
     commands:
       - echo "********* MyStage ***********"
       - pwd & ls -l
+      - ls -l target/*
     mappings:
       'BuildStage:OpenJDK':
-        - type: exported-variable
-          value: MY_VAR
-        - type: exported-variable
-          value: ANOTHER_VAR
         - type: output-directory
           value: target
