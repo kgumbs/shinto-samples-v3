@@ -27,7 +27,7 @@ stages:
         pluginAliasName: Snyk
         commands:
           - snyk auth ${SNYK_API_TOKEN}
-          - snyk monitor --org=${SNYK_ORG_ID} --file=pom.xml --debug
+          - snyk monitor --org=${SNYK_ORG_ID} --file=pom.xml
         mappings:
           'BuildStage:OpenJDK':
             - type: output-directory
