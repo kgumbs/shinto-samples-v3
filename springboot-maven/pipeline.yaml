@@ -47,3 +47,10 @@ stages:
           'BuildStage:OpenJDK':
             - type: output-directory
               value: target
+  - stageName: ImageStage
+    pluginName: UnixShell
+    pluginAliasName: UnixShell
+    metadata:
+      'UNIXSHELL:PRIVILEGED': 'true'
+    commands:
+      - pwd
