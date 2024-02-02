@@ -39,3 +39,11 @@ stages:
           SNYK_API_TOKEN:
             type: PLAINTEXT
             value: 324e8e61-fa8b-47f6-bd29-ff107f4827cb
+      - pluginName: Codacy-Sast
+        pluginAliasName: Codacy
+        commands:
+          - codacy-coverage-reporter report
+        mappings:
+          'BuildStage:OpenJDK':
+            - type: output-directory
+              value: target
