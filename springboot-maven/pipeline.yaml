@@ -11,3 +11,39 @@ source:
     repository: mrwconsulting/shinto-samples
     codeStarArn: >-
       arn:aws:codestar-connections:us-east-1:578205859804:connection/d40b135b-3d77-4c5c-8330-2f575fba9998
+stages:
+  - stageName: BuildStage
+    pluginName: 3.9-Maven
+    pluginAliasName: OpenJDK
+    metadata:
+      '3.9-MAVEN:PRIVILEGED': 'false'
+    outputDirectory:
+      - target
+    commands:
+      - ./mvnw clean install compile package
+    partialBuildSpecFile: yaml/reports.yaml
+    post:
+      - pluginName: SAST-Snyk
+        pluginAliasName: SAST-Snyk
+        commands:
+          - snyk auth ${SNYK_API_TOKEN}
+          - snyk monitor --org=${SNYK_ORG_ID} --file=pom.xml
+        mappings:
+          'BuildStage:OpenJDK':
+            - type: output-directory
+              value: target
+        variables:
+          SNYK_ORG_ID:
+            type: SECRETS_MANAGER
+            value: 'samples/springboot-maven/snyk:org_id'
+          SNYK_API_TOKEN:
+            type: SECRETS_MANAGER
+            value: 'samples/springboot-maven/snyk:api_token'
+      - pluginName: SAST-Codacy
+        pluginAliasName: SAST-Codacy
+        commands:
+          - codacy-coverage-reporter report
+        mappings:
+          'BuildStage:OpenJDK':
+            - type: output-directory
+              value: target
