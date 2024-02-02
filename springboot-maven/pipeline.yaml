@@ -34,11 +34,11 @@ stages:
               value: target
         variables:
           SNYK_ORG_ID:
-            type: PLAINTEXT
-            value: d765b93b-ebb4-47ea-80eb-8a877d364e4e
+            type: SECRETS_MANAGER
+            value: 'samples/springboot-maven/snyk:org_id'
           SNYK_API_TOKEN:
-            type: PLAINTEXT
-            value: 324e8e61-fa8b-47f6-bd29-ff107f4827cb
+            type: SECRETS_MANAGER
+            value: 'samples/springboot-maven/snyk:api_token'
       - pluginName: Codacy-Sast
         pluginAliasName: SAST-Codacy
         commands:
