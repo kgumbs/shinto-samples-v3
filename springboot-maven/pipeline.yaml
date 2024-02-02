@@ -23,7 +23,7 @@ stages:
       - ./mvnw clean install compile package
     partialBuildSpecFile: yaml/reports.yaml
     post:
-      - pluginName: Snyk-Sast
+      - pluginName: SAST-Snyk
         pluginAliasName: SAST-Snyk
         commands:
           - snyk auth ${SNYK_API_TOKEN}
@@ -39,7 +39,7 @@ stages:
           SNYK_API_TOKEN:
             type: SECRETS_MANAGER
             value: 'samples/springboot-maven/snyk:api_token'
-      - pluginName: Codacy-Sast
+      - pluginName: SAST-Codacy
         pluginAliasName: SAST-Codacy
         commands:
           - codacy-coverage-reporter report
