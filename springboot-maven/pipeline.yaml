@@ -31,15 +31,18 @@ stages:
             - type: output-directory
               value: target
         variables:
-          ORGANIZATION_PROVIDER:
-            type: PLAINTEXT
-            value: gh
           CODACY_API_TOKEN:
             type: SECRETS_MANAGER
             value: 'samples/springboot-maven/codacy:api_token'
           CODACY_PROJECT_TOKEN:
             type: SECRETS_MANAGER
             value: 'samples/springboot-maven/codacy:project_token'
+          CODACY_PROJECT_NAME:
+            type: PLAINTEXT
+            value: shinto-samples
+          CODACY_ORGANIZATION_PROVIDER:
+            type: PLAINTEXT
+            value: gh
       - pluginName: SAST-Snyk
         pluginAliasName: SAST-Snyk
         commands:
