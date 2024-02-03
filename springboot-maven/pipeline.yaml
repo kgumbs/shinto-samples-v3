@@ -23,6 +23,13 @@ stages:
       - ./mvnw clean install compile package
     partialBuildSpecFile: yaml/reports.yaml
     post:
+      - pluginName: SAST-Codacy
+        pluginAliasName: SAST-Codacy
+        commands: []
+        mappings:
+          'BuildStage:OpenJDK':
+            - type: output-directory
+              value: target
       - pluginName: SAST-Snyk
         pluginAliasName: SAST-Snyk
         commands:
