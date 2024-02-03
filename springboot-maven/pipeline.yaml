@@ -34,6 +34,12 @@ stages:
           ORGANIZATION_PROVIDER:
             type: PLAINTEXT
             value: gh
+          CODACY_API_TOKEN:
+            type: SECRETS_MANAGER
+            value: 'samples/springboot-maven/codacy:api_token'
+          CODACY_PROJECT_TOKEN:
+            type: SECRETS_MANAGER
+            value: 'samples/springboot-maven/codacy:project_token'
       - pluginName: SAST-Snyk
         pluginAliasName: SAST-Snyk
         commands:
