@@ -39,14 +39,6 @@ stages:
           SNYK_API_TOKEN:
             type: SECRETS_MANAGER
             value: 'samples/springboot-maven/snyk:api_token'
-      - pluginName: SAST-Codacy
-        pluginAliasName: SAST-Codacy
-        commands:
-          - codacy-coverage-reporter report
-        mappings:
-          'BuildStage:OpenJDK':
-            - type: output-directory
-              value: target
   - stageName: ImageStage
     pluginName: UnixShell
     pluginAliasName: UnixShell
