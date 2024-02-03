@@ -1,6 +1,6 @@
 version: '0.2'
 reports:
-  SurefireReports:
+  surefire-reports:
     files:
       - "**/*"
     base-directory: 'springboot-maven/target/surefire-reports'
