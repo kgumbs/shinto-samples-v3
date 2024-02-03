@@ -10,4 +10,5 @@ reports:
     files:
       - "**/*"
     base-directory: 'springboot-maven/target/surefire-reports'
+    file-format: 'JUNITXML'
     discard-paths: no
