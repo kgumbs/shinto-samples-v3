@@ -1,5 +1,11 @@
 version: '0.2'
 reports:
+  jacoco-report:
+    files:
+      - '**/*'
+    base-directory: 'springboot-maven/target/site/jacoco'
+    file-format: 'JACOCOXML'
+    discard-paths: no
   surefire-reports:
     files:
       - "**/*"
