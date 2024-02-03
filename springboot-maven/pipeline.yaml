@@ -20,7 +20,7 @@ stages:
     outputDirectory:
       - target
     commands:
-      - ./mvnw clean install compile package
+      - ./mvnw clean install compile test package
     partialBuildSpecFile: yaml/reports.yaml
     post:
       - pluginName: SAST-Codacy
