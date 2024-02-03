@@ -30,6 +30,10 @@ stages:
           'BuildStage:OpenJDK':
             - type: output-directory
               value: target
+        variables:
+          ORGANIZATION_PROVIDER:
+            type: PLAINTEXT
+            value: gh
       - pluginName: SAST-Snyk
         pluginAliasName: SAST-Snyk
         commands:
