@@ -64,6 +64,6 @@ stages:
             value: 'samples/springboot-maven/snyk:api_token'
   - stageName: ImageStage
     pluginName: 0.18-Trivy_Maven
-    pluginAliasName: Trivy-Maven
+    pluginAliasName: TRIVY-Maven
     commands:
       - pwd
