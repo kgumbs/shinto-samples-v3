@@ -62,8 +62,3 @@ stages:
           SNYK_API_TOKEN:
             type: SECRETS_MANAGER
             value: 'samples/springboot-maven/snyk:api_token'
-  - stageName: ImageStage
-    pluginName: 0.18-Trivy_Maven
-    pluginAliasName: Trivy_Maven
-    commands:
-      - pwd
