@@ -40,7 +40,7 @@ stages:
           CODACY_PROJECT_NAME:
             type: PLAINTEXT
             value: shinto-samples
-          CODACY_COVERAGE_REPORT:
+          CODACY_COVERAGE_REPORTS:
             type: PLAINTEXT
             value: 'target/site/jacoco/jacoco.xml'
           CODACY_ORGANIZATION_PROVIDER:
