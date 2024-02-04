@@ -114,9 +114,6 @@
 					<from>
 						<image>amazoncorretto:21-alpine-jdk</image>
 					</from>
-					<to>
-						<image>myimage</image>
-					</to>
 					<platform>
 						<os>linux</os>
 						<architecture>amd64</architecture>
