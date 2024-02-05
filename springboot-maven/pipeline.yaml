@@ -64,11 +64,12 @@ stages:
             type: SECRETS_MANAGER
             value: 'samples/springboot-maven/snyk:api_token'
   - stageName: ImageStage
-    pluginName: 0.18-Trivy:JiB-Maven
+    pluginName: 0.18-Trivy:Maven
     pluginAliasName: TRIVY-JiB
     commands:
       - ./mvnw jib:buildTar
-      - trivy image --scanners vuln --format template --template "@contrib/asff.tpl" --output target/asff-report.xml
+      - trivy image --scanners vuln --format template --template "@contrib/asff.tpl" --output target/image-report.asff
+      - aws securityhub batch-import-findings --findings file://target/image-report.asff
     mappings:
       'BuildStage:OpenJDK':
         - type: output-directory
@@ -78,7 +79,7 @@ stages:
         type: PLAINTEXT
         value: 'target/jib-image.tar'
     pre:
-      - pluginName: 0.18-Trivy:Buildpack-Maven
+      - pluginName: 0.18-Trivy:Maven
         pluginAliasName: TRIVY-Buildpack
         commands:
           - ./mvnw spring-boot:build-image
