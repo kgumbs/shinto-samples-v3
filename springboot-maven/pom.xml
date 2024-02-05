@@ -12,12 +12,13 @@
 	</parent>
 	<groupId>tech.mrwconsulting</groupId>
 	<artifactId>springboot-maven</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>MyApplication</name>
 	<description>Shinto Pipeline example for Springboot</description>
+	<version>1.0.${version}</version>
 	<properties>
 		<java.version>21</java.version>
 		<start-class>tech.mrwconsulting.springboot.MyApplication</start-class>
+		<version>1.0.0-SNAPSHOT</version>
 	</properties>
 	<dependencies>
 		<dependency>
