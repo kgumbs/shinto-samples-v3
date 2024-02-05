@@ -68,7 +68,7 @@ stages:
     pluginAliasName: TRIVY-JiB
     commands:
       - mvn jib:buildTar
-      - trivy image --format json -o results.json
+      - trivy image --format json --output results.json
     mappings:
       'BuildStage:OpenJDK':
         - type: output-directory
