@@ -82,6 +82,8 @@ stages:
     pre:
       - pluginName: 0.18-Trivy:Maven
         pluginAliasName: TRIVY-Buildpack
+        metadata:
+          '0.18-TRIVY:MAVEN:PRIVILEGED': 'true'
         commands:
           - ./mvnw spring-boot:build-image
         mappings:
