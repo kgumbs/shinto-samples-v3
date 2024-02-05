@@ -63,33 +63,6 @@ stages:
           SNYK_API_TOKEN:
             type: SECRETS_MANAGER
             value: 'samples/springboot-maven/snyk:api_token'
-      - pluginName: SAST-Mend
-        pluginAliasName: SAST-Mend
-        commands:
-          - java -jar /usr/local/bin/wss-unified-agent.jar
-        mappings:
-          'BuildStage:OpenJDK':
-            - type: output-directory
-              value: target
-        variables:
-          WS_PRODUCTNAME:
-            type: PLAINTEXT
-            value: 'springboot-maven'
-          WS_PROJECTNAME:
-            type: PLAINTEXT
-            value: 'springboot-maven'
-          WS_CHECKPOLICIES:
-            type: PLAINTEXT
-            value: true
-          WS_FORCECHECKALLDEPENDENCIES:
-            type: PLAINTEXT
-            value: true
-          WS_FORCEUPDATE:
-            type: PLAINTEXT
-            value: true
-          WS_FORCEUPDATE_FAILBUILDONPOLICYVIOLATION:
-            type: PLAINTEXT
-            value: true
   - stageName: ImageStage
     pluginName: 0.18-Trivy:Maven
     pluginAliasName: TRIVY-JiB
