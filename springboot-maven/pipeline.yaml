@@ -68,8 +68,12 @@ stages:
     pluginAliasName: TRIVY-JiB
     commands:
       - mvn jib:buildTar
-      - trivy --input target/jib-image.tar
+      - trivy image --format json -o results.json
     mappings:
       'BuildStage:OpenJDK':
         - type: output-directory
           value: target
+    variables:
+      TRIVY_INPUT:
+        type: PLAINTEXT
+        value: 'target/jib-image.tar'
