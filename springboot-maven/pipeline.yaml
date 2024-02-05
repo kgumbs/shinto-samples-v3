@@ -66,4 +66,8 @@ stages:
     pluginName: 0.18-Trivy:JiB-Maven
     pluginAliasName: TRIVY-JiB
     commands:
-      - pwd
+      - mvn jib:buildTar
+    mappings:
+      'BuildStage:OpenJDK':
+        - type: output-directory
+          value: target
