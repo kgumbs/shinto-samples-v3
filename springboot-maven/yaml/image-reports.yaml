@@ -2,7 +2,7 @@ version: '0.2'
 reports:
   trivy-reports:
     files:
-      - "report.asff"
+      - "junit-report.xml"
     base-directory: 'springboot-maven/target'
-    file-format: 'ASFF'
+    file-format: 'JUNITXML'
     discard-paths: no

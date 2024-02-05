@@ -68,7 +68,7 @@ stages:
     pluginAliasName: TRIVY-JiB
     commands:
       - mvn jib:buildTar
-      - trivy image --scanners vuln --format asff --output target/result.asff
+      - trivy image --scanners vuln --format template --template "@contrib/junit.tpl" --output target/junit-report.xml
     mappings:
       'BuildStage:OpenJDK':
         - type: output-directory
