@@ -67,7 +67,7 @@ stages:
     pluginName: 0.18-Trivy:JiB-Maven
     pluginAliasName: TRIVY-JiB
     commands:
-      - mvn jib:buildTar
+      - ./mvnw jib:buildTar
       - trivy image --scanners vuln --format template --template "@contrib/junit.tpl" --output target/junit-report.xml
     mappings:
       'BuildStage:OpenJDK':
