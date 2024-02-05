@@ -20,8 +20,10 @@ stages:
     outputDirectory:
       - target
     commands:
-      - if [ -z "${BUILD_NUMBER:-}" ];then export BUILD_NUMBER=${CODEBUILD_BUILD_NUMBER};fi
-      - ./mvnw clean install compile test package -Dversion=${BUILD_NUMBER}
+      - >-
+        if [ -z "${BUILD_NUMBER:-}" ];then export
+        BUILD_NUMBER=${CODEBUILD_BUILD_NUMBER};fi
+      - './mvnw clean install compile test package -Dversion=${BUILD_NUMBER}'
     partialBuildSpecFile: yaml/build-reports.yaml
     post:
       - pluginName: SAST-Codacy
@@ -43,15 +45,15 @@ stages:
             value: shinto-samples
           CODACY_COVERAGE_REPORTS:
             type: PLAINTEXT
-            value: 'target/site/jacoco/jacoco.xml'
+            value: target/site/jacoco/jacoco.xml
           CODACY_ORGANIZATION_PROVIDER:
             type: PLAINTEXT
             value: gh
       - pluginName: SAST-Snyk
         pluginAliasName: SAST-Snyk
         commands:
-          - snyk auth ${SNYK_API_TOKEN}
-          - snyk monitor --org=${SNYK_ORG_ID} --file=pom.xml
+          - 'snyk auth ${SNYK_API_TOKEN}'
+          - 'snyk monitor --org=${SNYK_ORG_ID} --file=pom.xml'
         mappings:
           'BuildStage:OpenJDK':
             - type: output-directory
@@ -63,14 +65,32 @@ stages:
           SNYK_API_TOKEN:
             type: SECRETS_MANAGER
             value: 'samples/springboot-maven/snyk:api_token'
+      - pluginName: SAST-Mend
+        pluginAliasName: SAST-Mend
+        commands: []
+        mappings:
+          'BuildStage:OpenJDK':
+            - type: output-directory
+              value: target
+        variables:
+          WS_PRODUCTNAME:
+            type: PLAINTEXT
+            value: springboot-maven
+          WS_PROJECTNAME:
+            type: PLAINTEXT
+            value: springboot-maven
   - stageName: ImageStage
-    pluginName: 0.18-Trivy:Maven
+    pluginName: '0.18-Trivy:Maven'
     pluginAliasName: TRIVY-JiB
     commands:
-      - ./mvnw jib:buildTar
-      - trivy image --format template --template "@contrib/asff.tpl" --output target/image-report.json
+      - './mvnw jib:buildTar'
+      - >-
+        trivy image --format template --template "@contrib/asff.tpl" --output
+        target/image-report.json
       - cat target/image-report.json
-      - aws securityhub batch-import-findings --findings file://target/image-report.json
+      - >-
+        aws securityhub batch-import-findings --findings
+        file://target/image-report.json
     mappings:
       'BuildStage:OpenJDK':
         - type: output-directory
@@ -78,16 +98,16 @@ stages:
     variables:
       TRIVY_INPUT:
         type: PLAINTEXT
-        value: 'target/jib-image.tar'
+        value: target/jib-image.tar
     pre:
-      - pluginName: 0.18-Trivy:Maven
+      - pluginName: '0.18-Trivy:Maven'
         pluginAliasName: TRIVY-Buildpack
         metadata:
           '0.18-TRIVY:MAVEN:PRIVILEGED': 'true'
         commands:
           - apk add openrc docker && rc-update add docker boot
           - service docker start
-          - ./mvnw spring-boot:build-image
+          - './mvnw spring-boot:build-image'
         mappings:
           'BuildStage:OpenJDK':
             - type: output-directory
