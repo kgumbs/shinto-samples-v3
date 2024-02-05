@@ -68,7 +68,7 @@ stages:
     pluginAliasName: TRIVY-JiB
     commands:
       - ./mvnw jib:buildTar
-      - trivy image --scanners vuln --format template --template "@contrib/junit.tpl" --output target/junit-report.xml
+      - trivy image --scanners vuln --format template --template "@contrib/asff.tpl" --output target/asff-report.xml
     mappings:
       'BuildStage:OpenJDK':
         - type: output-directory
@@ -77,4 +77,12 @@ stages:
       TRIVY_INPUT:
         type: PLAINTEXT
         value: 'target/jib-image.tar'
-    partialBuildSpecFile: yaml/image-reports.yaml
+    pre:
+      - pluginName: 0.18-Trivy:Buildpack-Maven
+        pluginAliasName: TRIVY-Buildpack
+        commands:
+          - ./mvnw spring-boot:build-image
+        mappings:
+          'BuildStage:OpenJDK':
+            - type: output-directory
+              value: target
