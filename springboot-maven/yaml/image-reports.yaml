@@ -1,0 +1,8 @@
+version: '0.2'
+reports:
+  trivy-reports:
+    files:
+      - "report.asff"
+    base-directory: 'springboot-maven/target'
+    file-format: 'ASFF'
+    discard-paths: no

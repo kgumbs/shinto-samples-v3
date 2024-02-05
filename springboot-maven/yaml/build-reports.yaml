@@ -1,6 +1,6 @@
 version: '0.2'
 reports:
-  jacoco-report:
+  jacoco-reports:
     files:
       - '**/*'
     base-directory: 'springboot-maven/target/site/jacoco'

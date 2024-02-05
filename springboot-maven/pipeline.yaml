@@ -22,7 +22,7 @@ stages:
     commands:
       - if [ -z "${BUILD_NUMBER:-}" ];then export BUILD_NUMBER=${CODEBUILD_BUILD_NUMBER};fi
       - ./mvnw clean install compile test package -Dversion=${BUILD_NUMBER}
-    partialBuildSpecFile: yaml/reports.yaml
+    partialBuildSpecFile: yaml/build-reports.yaml
     post:
       - pluginName: SAST-Codacy
         pluginAliasName: SAST-Codacy
@@ -68,8 +68,7 @@ stages:
     pluginAliasName: TRIVY-JiB
     commands:
       - mvn jib:buildTar
-      - trivy image --scanners vuln --format json --output results.json
-      - ls -l
+      - trivy image --scanners vuln --format asff --output target/result.asff
     mappings:
       'BuildStage:OpenJDK':
         - type: output-directory
@@ -78,3 +77,4 @@ stages:
       TRIVY_INPUT:
         type: PLAINTEXT
         value: 'target/jib-image.tar'
+    partialBuildSpecFile: yaml/image-reports.yaml
