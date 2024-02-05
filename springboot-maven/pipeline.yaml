@@ -69,6 +69,7 @@ stages:
     commands:
       - ./mvnw jib:buildTar
       - trivy image --scanners vuln --format template --template "@contrib/asff.tpl" --output target/image-report.asff
+      - cat target/image-report.asff
       - aws securityhub batch-import-findings --findings file://target/image-report.asff
     mappings:
       'BuildStage:OpenJDK':
