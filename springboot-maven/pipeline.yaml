@@ -85,6 +85,7 @@ stages:
         metadata:
           '0.18-TRIVY:MAVEN:PRIVILEGED': 'true'
         commands:
+          - apk add docker
           - ./mvnw spring-boot:build-image
         mappings:
           'BuildStage:OpenJDK':
