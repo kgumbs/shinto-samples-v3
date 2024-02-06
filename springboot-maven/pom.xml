@@ -50,6 +50,9 @@
 					<image>
 						<name>${project.artifactId}-${project.version}</name>
 						<builder>paketobuildpacks/builder-jammy-base:latest</builder>
+                        <env>
+                            <BP_JVM_VERSION>21</BP_JVM_VERSION>
+                        </env>
 						<publish>false</publish>
 					</image>
 				</configuration>
