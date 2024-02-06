@@ -48,7 +48,7 @@
 				<version>3.2.2</version>
 				<configuration>
 					<image>
-						<builder>paketobuildpacks/builder:full</builder>
+						<builder>paketobuildpacks/builder:base</builder>
 					</image>
 				</configuration>
 			</plugin>
