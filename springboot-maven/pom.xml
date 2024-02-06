@@ -125,10 +125,6 @@
 					<from>
 						<image>amazoncorretto:21-alpine-jdk</image>
 					</from>
-					<platform>
-						<os>linux</os>
-						<architecture>amd64</architecture>
-					</platform>
 				</configuration>
 			</plugin>
 		</plugins>
