@@ -70,9 +70,10 @@ stages:
     pluginAliasName: TRIVY-JiB
     commands:
       - './mvnw jib:buildTar'
+      - TRIVY_INPUT=target/jib-image.tar
       - >-
-        trivy image --format template --template "@contrib/asff.tpl" --output
-        target/image-report.json
+        trivy image --format template --template "@contrib/asff.tpl" --input
+        ${TRIVY_INPUT} --output target/image-report.json
       - cat target/image-report.json
       - >-
         aws securityhub batch-import-findings --findings
@@ -81,10 +82,6 @@ stages:
       'BuildStage:OpenJDK':
         - type: output-directory
           value: target
-    variables:
-      TRIVY_INPUT:
-        type: PLAINTEXT
-        value: target/jib-image.tar
     pre:
       - pluginName: '0.18-Trivy:Maven'
         pluginAliasName: TRIVY-Buildpack
@@ -96,8 +93,20 @@ stages:
             nohup /usr/bin/dockerd --host=unix:///var/run/docker.sock
             --host=tcp://127.0.0.1:2375 &
           - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
-          - ./mvnw spring-boot:build-image
+          - './mvnw spring-boot:build-image'
+          - TRIVY_INPUT=target/jib-image.tar
+          - >-
+            trivy image --format template --template "@contrib/asff.tpl" --input
+            ${TRIVY_INPUT} --output target/image-report.json
+          - cat target/image-report.json
+          - >-
+            aws securityhub batch-import-findings --findings
+            file://target/image-report.json
         mappings:
           'BuildStage:OpenJDK':
             - type: output-directory
               value: target
+        variables:
+          TRIVY_INPUT:
+            type: PLAINTEXT
+            value: target/jib-image.tar
