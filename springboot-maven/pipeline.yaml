@@ -91,7 +91,7 @@ stages:
         metadata:
           '0.18-TRIVY:MAVEN:PRIVILEGED': 'true'
         commands:
-          - apk add --update docker
+          - apk add docker
           - >-
             nohup /usr/bin/dockerd --host=unix:///var/run/docker.sock
             --host=tcp://127.0.0.1:2375 --storage-driver=overlay2 &
