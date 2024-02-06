@@ -49,11 +49,6 @@
 				<configuration>
 					<image>
 						<builder>paketobuildpacks/builder:full</builder>
-						<buildpacks>
-							<buildpack>gcr.io/paketo-buildpacks/spring-boot:latest</buildpack>
-							<buildpack>gcr.io/paketo-buildpacks/executable-jar:latest</buildpack>
-							<buildpack>gcr.io/paketo-buildpacks/amazon-corretto:latest</buildpack>
-						</buildpacks>
 					</image>
 				</configuration>
 			</plugin>
