@@ -126,8 +126,8 @@
 						<image>amazoncorretto:21-alpine-jdk</image>
 					</from>
 					<platform>
-						<architecture>amd64</architecture>
 						<os>linux</os>
+						<architecture>amd64</architecture>
 					</platform>
 				</configuration>
 			</plugin>
