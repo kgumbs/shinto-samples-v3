@@ -49,6 +49,8 @@
 				<configuration>
 					<image>
 						<name>${project.artifactId}-${project.version}</name>
+						<builder>paketobuildpacks/builder-jammy-base:latest</builder>
+						<publish>false</publish>
 					</image>
 				</configuration>
 			</plugin>
