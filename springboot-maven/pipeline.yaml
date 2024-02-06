@@ -76,9 +76,8 @@ stages:
         trivy image --input target/jib-image.tar --output
         target/image-report.json --format template --template
         "@contrib/asff.tpl"
-      - >-
-        aws securityhub batch-import-findings --findings
-        file://target/image-report.json
+      - report=$(cat target/image-report.json)
+      - 'aws securityhub batch-import-findings --findings ${report}'
     mappings:
       'BuildStage:OpenJDK':
         - type: output-directory
@@ -100,9 +99,8 @@ stages:
             trivy image --input target/jib-image.tar --output
             target/image-report.json --format template --template
             "@contrib/asff.tpl"
-          - >-
-            aws securityhub batch-import-findings --findings
-            file://target/image-report.json
+          - report=$(cat target/image-report.json)
+          - 'aws securityhub batch-import-findings --findings ${report}'
         mappings:
           'BuildStage:OpenJDK':
             - type: output-directory
