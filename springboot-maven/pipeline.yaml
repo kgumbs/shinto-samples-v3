@@ -71,7 +71,8 @@ stages:
     metadata:
       '0.18-TRIVY:MAVEN:PRIVILEGED': 'true'
     commands:
-      - ls target/*
+      - ls -l target/*
+      - IMAGE_NAME='springboot-maven-'${CODEBUILD_BUILD_NUMBER}
       - apk add docker
       - >-
         nohup /usr/bin/dockerd --host=unix:///var/run/docker.sock
@@ -82,7 +83,7 @@ stages:
       - >-
         trivy image --format template --template "@contrib/asff.tpl" --output
         target/image-report.json --no-progress --severity HIGH,CRITICAL
-        --auto-refresh 
+        --auto-refresh ${IMAGE_NAME}
       - cat target/image-report.json
       - >-
         aws securityhub batch-import-findings --findings
