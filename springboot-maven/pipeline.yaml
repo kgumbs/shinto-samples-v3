@@ -71,19 +71,11 @@ stages:
     metadata:
       '0.18-TRIVY:MAVEN:PRIVILEGED': 'true'
     commands:
-      - ls -l target/*
-      - IMAGE_NAME='springboot-maven-'${CODEBUILD_BUILD_NUMBER}
-      - apk add docker
-      - >-
-        nohup /usr/bin/dockerd --host=unix:///var/run/docker.sock
-        --host=tcp://127.0.0.1:2375 &
-      - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
       - './mvnw jib:buildTar'
-      - docker load --input target/jib-image.tar
       - >-
         trivy image --format template --template "@contrib/asff.tpl" --output
         target/image-report.json --no-progress --severity HIGH,CRITICAL
-        --auto-refresh ${IMAGE_NAME}
+        --auto-refresh --input target/jib-image.tar
       - cat target/image-report.json
       - >-
         aws securityhub batch-import-findings --findings
