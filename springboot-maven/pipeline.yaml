@@ -73,9 +73,10 @@ stages:
     commands:
       - './mvnw jib:buildTar'
       - >-
-        trivy image --format template --template "@contrib/asff.tpl" --output
-        target/image-report.json --no-progress --severity HIGH,CRITICAL
-        --auto-refresh --input target/jib-image.tar
+        trivy image --input target/jib-image.tar --output
+        target/image-report.json --format template --template
+        "@contrib/asff.tpl" --no-progress --severity HIGH,CRITICAL
+        --auto-refresh
       - cat target/image-report.json
       - >-
         aws securityhub batch-import-findings --findings
@@ -98,9 +99,10 @@ stages:
           - './mvnw spring-boot:build-image'
           - TRIVY_INPUT=target/jib-image.tar
           - >-
-            trivy image --format template --template "@contrib/asff.tpl"
-            --output target/image-report.json --no-progress --severity
-            HIGH,CRITICAL --auto-refresh 
+            trivy image --input target/jib-image.tar --output
+            target/image-report.json --format template --template
+            "@contrib/asff.tpl" --no-progress --severity HIGH,CRITICAL
+            --auto-refresh
           - cat target/image-report.json
           - >-
             aws securityhub batch-import-findings --findings
