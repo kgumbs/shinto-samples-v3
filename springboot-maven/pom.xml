@@ -48,11 +48,14 @@
 				<version>3.2.2</version>
 				<configuration>
 					<image>
-						<name>${project.artifactId}-${project.version}</name>
+						<name>${project.artifactId}</name>
 						<builder>paketobuildpacks/builder-jammy-base:latest</builder>
                         <env>
                             <BP_JVM_VERSION>21</BP_JVM_VERSION>
                         </env>
+						<tags>
+							<tag>${project.version}</tag>
+						</tags>
 						<publish>false</publish>
 					</image>
 				</configuration>
@@ -113,9 +116,19 @@
 				<artifactId>jib-maven-plugin</artifactId>
 				<version>3.4.0</version>
 				<configuration>
+					<to>
+						<image>${project.artifactId}</image>
+						<tags>
+							<tag>${project.version}</tag>
+						</tags>
+					</to>
 					<from>
 						<image>amazoncorretto:21-alpine-jdk</image>
 					</from>
+					<platform>
+						<architecture>amd64</architecture>
+						<os>linux</os>
+					</platform>
 				</configuration>
 			</plugin>
 		</plugins>
