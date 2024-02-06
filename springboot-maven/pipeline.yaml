@@ -22,8 +22,8 @@ stages:
     commands:
       - >-
         if [ -z "${BUILD_NUMBER:-}" ];then export
-        BUILD_NUMBER=${CODEBUILD_BUILD_NUMBER};fi
-      - './mvnw clean install compile test package -Dversion=1.0.${BUILD_NUMBER}'
+        BUILD_NUMBER=1.0.${CODEBUILD_BUILD_NUMBER};fi
+      - './mvnw clean install compile test package -Dversion=${BUILD_NUMBER}'
     partialBuildSpecFile: yaml/build-reports.yaml
     post:
       - pluginName: SAST-Codacy
