@@ -76,7 +76,7 @@ stages:
       - >-
         trivy image --input target/jib-image.tar --output
         target/image-report.json --format template --template
-        "@contrib/asff.tpl" --no-progress --severity HIGH,CRITICAL
+        "@contrib/asff.tpl" --severity HIGH,CRITICAL
         --auto-refresh
       - cat target/image-report.json
       - >-
@@ -102,7 +102,7 @@ stages:
           - >-
             trivy image --input target/jib-image.tar --output
             target/image-report.json --format template --template
-            "@contrib/asff.tpl" --no-progress --severity HIGH,CRITICAL
+            "@contrib/asff.tpl" --severity HIGH,CRITICAL
             --auto-refresh
           - cat target/image-report.json
           - >-
