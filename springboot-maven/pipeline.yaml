@@ -71,6 +71,7 @@ stages:
     metadata:
       '0.18-TRIVY:MAVEN:PRIVILEGED': 'true'
     commands:
+      - env
       - './mvnw jib:buildTar'
       - >-
         trivy image --input target/jib-image.tar --output
