@@ -94,7 +94,6 @@ stages:
             --host=tcp://127.0.0.1:2375 &
           - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
           - './mvnw spring-boot:build-image'
-          - TRIVY_INPUT=target/jib-image.tar
           - >-
             trivy image --input target/jib-image.tar --output
             target/image-report.json --format template --template
