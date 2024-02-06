@@ -46,6 +46,15 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>3.2.2</version>
+				<configuration>
+        			<image>
+                		<buildpacks>
+                        	<buildpack>gcr.io/paketo-buildpacks/spring-boot:latest</buildpack>
+                        	<buildpack>gcr.io/paketo-buildpacks/executable-jar:latest</buildpack>
+                        	<buildpack>gcr.io/paketo-buildpacks/amazon-corretto:latest</buildpack>
+                		</buildpacks>
+					</image>
+				</configuration>	
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
