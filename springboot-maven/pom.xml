@@ -48,7 +48,7 @@
 				<version>3.2.2</version>
 				<configuration>
 					<image>
-						<builder>paketobuildpacks/builder:base</builder>
+						<name>${project.artifactId}-${project.version}</name>
 					</image>
 				</configuration>
 			</plugin>
