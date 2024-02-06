@@ -68,9 +68,17 @@ stages:
   - stageName: ImageStage
     pluginName: '0.18-Trivy:Maven'
     pluginAliasName: TRIVY-JiB
+    metadata:
+      '0.18-TRIVY:MAVEN:PRIVILEGED': 'true'
     commands:
-      - './mvnw jib:buildTar'
-      - TRIVY_INPUT=target/jib-image.tar
+      - ls target/*
+      - apk add docker
+      - >-
+        nohup /usr/bin/dockerd --host=unix:///var/run/docker.sock
+        --host=tcp://127.0.0.1:2375 &
+      - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
+      - './mvnw jib:build'
+      - docker load --input target/jib-image.tar
       - >-
         trivy image --format template --template "@contrib/asff.tpl" --output
         target/image-report.json --no-progress --severity HIGH,CRITICAL
