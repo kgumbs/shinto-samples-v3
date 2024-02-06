@@ -65,20 +65,6 @@ stages:
           SNYK_API_TOKEN:
             type: SECRETS_MANAGER
             value: 'samples/springboot-maven/snyk:api_token'
-      - pluginName: SAST-Mend
-        pluginAliasName: SAST-Mend
-        commands: []
-        mappings:
-          'BuildStage:OpenJDK':
-            - type: output-directory
-              value: target
-        variables:
-          WS_PRODUCTNAME:
-            type: PLAINTEXT
-            value: springboot-maven
-          WS_PROJECTNAME:
-            type: PLAINTEXT
-            value: springboot-maven
   - stageName: ImageStage
     pluginName: '0.18-Trivy:Maven'
     pluginAliasName: TRIVY-JiB
@@ -105,8 +91,11 @@ stages:
         metadata:
           '0.18-TRIVY:MAVEN:PRIVILEGED': 'true'
         commands:
-          - apk add --update docker openrc
-          - service docker start && service docker status
+          - apk add --update docker
+          - >-
+            nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock
+            --host=tcp://127.0.0.1:2375 --storage-driver=overlay2 &
+          - timeout 15 sh -c "until docker info; do echo .; sleep 1;
           - './mvnw spring-boot:build-image'
         mappings:
           'BuildStage:OpenJDK':
