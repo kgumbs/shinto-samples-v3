@@ -8,9 +8,9 @@ source:
   type: CodeStar
   codeStar:
     branch: main
-    repository: mrwconsulting/shinto-samples
+    repository: kgumbs/shinto-samples-v3
     codeStarArn: >-
-      arn:aws:codestar-connections:us-east-1:578205859804:connection/d40b135b-3d77-4c5c-8330-2f575fba9998
+      arn:aws:codestar-connections:us-east-1:340717391351:connection/a43a9fd1-d254-479d-bcf4-cf3fc443a503
 stages:
   - stageName: BuildStage
     pluginName: 3.9-Maven
