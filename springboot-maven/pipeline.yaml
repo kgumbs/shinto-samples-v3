@@ -36,13 +36,13 @@ stages:
         variables:
           CODACY_API_TOKEN:
             type: SECRETS_MANAGER
-            value: 'samples/springboot-maven/codacy:api_token'
+            value: 'samples/springboot-maven/codacy/api:token'
           CODACY_PROJECT_TOKEN:
             type: SECRETS_MANAGER
-            value: 'samples/springboot-maven/codacy:project_token'
+            value: 'samples/springboot-maven/codacy/project:token'
           CODACY_PROJECT_NAME:
             type: PLAINTEXT
-            value: shinto-samples
+            value: shinto-samples-v3
           CODACY_COVERAGE_REPORTS:
             type: PLAINTEXT
             value: target/site/jacoco/jacoco.xml
@@ -61,10 +61,10 @@ stages:
         variables:
           SNYK_ORG_ID:
             type: SECRETS_MANAGER
-            value: 'samples/springboot-maven/snyk:org_id'
+            value: 'samples/springboot-maven/snyk/org:id'
           SNYK_API_TOKEN:
             type: SECRETS_MANAGER
-            value: 'samples/springboot-maven/snyk:api_token'
+            value: 'samples/springboot-maven/snyk/api:token'
   - stageName: ImageStage
     pluginName: '0.18-Trivy:Maven'
     pluginAliasName: TRIVY-JiB
